@@ -17,7 +17,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake ..
+          cmake ../  # Ensure it points to the right directory
           make
 
       - name: Run Tests
