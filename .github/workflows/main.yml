@@ -1,0 +1,24 @@
+name: C++ Build and Test
+
+on: [push, pull_request]  # Runs the workflow on every push and pull request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Using Ubuntu for testing
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3  # Clones the repository
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y g++ cmake make  # Install C++ tools
+
+      - name: Build project
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          make
+
+      - name: Run Tests
+        run: ./build/test_executable  # Replace with your actual test executable
